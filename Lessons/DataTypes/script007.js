@@ -1,12 +1,14 @@
 'use strict';
 
-/* const answers = [];
+const answers = [];
 
-answers[0] = promt("Ваш любимый цвет?");
-answers[1] = promt("Ваш любимый авто?");
-answers[2] = promt("Ваше любимое число?");
+answers[0] = prompt("Ваш любимый цвет?");
+answers[1] = prompt("Ваш любимый авто?");
+answers[2] = prompt("Ваше любимое число?");
 
-document.write (answers); */
+document.write (answers);
 
-const answer = promt ("How old are you?");
-console.log (answer);
+/* const answer = prompt ('How old are you?', '');
+console.log (answer); */
+
+/* const answer = confirm (); */
