@@ -15,12 +15,12 @@ const out3 = [-5, -1, 0, 1, 3, 5, 8, 99];
 //сортирует массив пузырьковой сортировкой
 const sort = (input) => {
     let tempNumber;
-    for (let N = 0; N < input.length - 1; N++) {
-        for (let i = 0; i < input.length - 1 - N; i++) {
-            if (input [i] - input [i + 1] > 0) {
-                tempNumber = input [i + 1];
-                input [i + 1] = input [i];
-                input [i] = tempNumber;
+    for (let i = 0; i < input.length - 1; i++) {
+        for (let j = 0; j < input.length - 1 - i; j++) {
+            if (input [j] - input [j + 1] > 0) {
+                tempNumber = input [j + 1];
+                input [j + 1] = input [j];
+                input [j] = tempNumber;
             }
         }
     }
