@@ -72,15 +72,14 @@ btn.addEventListener('click', (event) => {
     check[2].checked = false;
 });
 
-const deleteFilm = document.getElementsByClassName('delete');
-Object.keys(deleteFilm).forEach(key => {
-    deleteFilm[key].addEventListener('click', (event) => {
-       
-        movieDB.movies.splice(key, 1);
-        console.log(movieDB.movies);
-        
-        event.target.closest('li').remove();
-
-        sortFilmList(movieDB);
-    });
+const deleteFilm = document.querySelector('.promo__interactive-list');
+deleteFilm.addEventListener('click', (event) => {
+    const numberOfFilms = event.target.parentElement.parentElement.getElementsByTagName('li');
+    for (let i = 0; i < numberOfFilms.length - 1; i++) {
+        if ( numberOfFilms[i] === event.target.parentElement) {
+            movieDB.movies.splice(i, 1);
+        }
+    }
+    event.target.closest('li').remove();
+    sortFilmList(movieDB);
 });
