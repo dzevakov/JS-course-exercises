@@ -109,7 +109,7 @@ modalTrigger.forEach(btn => {
 function closeModal() {
     modal.classList.add('hide');
     modal.classList.remove('show');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = '';
 }
 
 modalCloseBtn.addEventListener('click', closeModal);
@@ -130,7 +130,7 @@ document.addEventListener('keydown', (e) =>{
 
 class MenuCard{
     constructor(src, alt, title, descr, price, parentSelector) {
-        this.scr = src;
+        this.src = src;
         this.alt = alt;
         this.title = title;
         this.descr = descr;
@@ -191,5 +191,59 @@ class MenuCard{
         8,
         ".menu .container"
     ).render();
+
+//Forms
+
+const forms = document.querySelectorAll("form");
+
+const message = {
+    loading: 'Загрузка',
+    success: 'Спасибо. Скоро мы с Вами свяжемся.',
+    failure: 'Что-то пошло не так'
+};
+
+forms.forEach(item => {
+    postData(item);
+});
+
+function postData(form) {
+    form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+
+        const statusMessage = document.createElement('div');
+        statusMessage.classList.add('status');
+        statusMessage.textContent = message.loading;
+        form.append(statusMessage);
+
+        const request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        
+        request.setRequestHeader('Content-type', 'application/json');
+        const formData = new FormData(form);
+
+        const object = {};
+        formData.forEach(function(value, key) {
+            object[key] = value;
+        });
+
+        const json = JSON.stringify(object);
+
+        request.send(json);
+
+        request.addEventListener('load', () =>{
+            if (request.status === 200) {
+                console.log(request.response);
+                statusMessage.textContent = message.success;
+                form.reset();
+                setTimeout(()=>{
+                    statusMessage.remove();
+                }, 5000);
+            } else {
+                statusMessage.textContent = message.failure;
+            }
+        });
+
+    });
+}
 
 });
