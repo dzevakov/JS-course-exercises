@@ -52,16 +52,17 @@ init(goodsInShop) //доделать init.js
         users: []
 
       };
+    const state = {
+        save: function() {
+            localStorage.setItem("state", JSON.stringify(state));
+        },
 
-// Сохраняем данные пользователя
-    state.save = function() {
-        localStorage.setItem("state", JSON.stringify(state));
+        load: function() {
+            JSON.parse(localStorage.getItem("state"));
+        },
+
     };
 
-// Загружаем данные пользователя
-    state.load = function() {
-        JSON.parse(localStorage.getItem("state"));
-    };
 
 // Добавляем пользователя, если его еще не существует
 function addUser(userName, userPsw) {
