@@ -1,21 +1,57 @@
 `use strict`;
 
-const users = {},
-      goodsAll = {
-        a1: false,
-        a2: false,
-        a3: false,
-        b1: false,
-        b2: false,
-        b3: false,
-        c1: false,
-        c2: false,
-        c3: false,
-        d1: false,
-        d2: false,
-        d3: false
+const type = {
+    default: 'default',
+    eco: 'eco',
+    discount: 'discount',
+    hot: 'hot'
+}
+
+const good = {
+    desctiption: 'text',
+    cost: 100,
+    type: type.eco,
+    img: './good.jpg'
+}
+
+const user = {
+    id: 0, //унакльно, находить маакс id из сохзраненных и делать +1
+    name: 'vasya',
+    email: 'vasya@gmail.com',
+    password: '123',
+    goods: []
+}
+
+const state = {
+    users: []
+  };
+
+user.goods.push(good)
+// user.goods[0]
+
+const goodsInShop = []
+init(goodsInShop) //доделать init.js
+
+
+// const users = {},
+//       goodsAll = {
+//         a1: false,
+//         a2: false,
+//         a3: false,
+//         b1: false,
+//         b2: false,
+//         b3: false,
+//         c1: false,
+//         c2: false,
+//         c3: false,
+//         d1: false,
+//         d2: false,
+//         d3: false
+//       };
+      const state = {
+        users: []
+
       };
-      const state = {};
 
 // Сохраняем данные пользователя
     state.save = function() {
@@ -33,7 +69,9 @@ function addUser(userName, userPsw) {
         name: userName,
         psw: userPsw
     };
-    users[userName] = newUser;
+    state.users.push(newUser)
+    state.save()
+    // users[userName] = newUser;
     // console.log(users);
 }
 
@@ -55,9 +93,9 @@ btn.addEventListener('click', (e) => {
 
     if (userName in users === false) {
         addUser(userName, userPsw);
-        state[userName] = goodsAll;
-        // console.log(state);
-        state.save();
+        // state[userName] = goodsAll;
+        // // console.log(state);
+        // state.save();
     } else {
         alert('Пользователь с таким именем уже существует');
         return;
