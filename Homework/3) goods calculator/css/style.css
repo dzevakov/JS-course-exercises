@@ -4,7 +4,8 @@
 
 .input_form{
     width: 250px;
-    position: relative; left: 40px; top: 40px;
+    position: absolute; left: 40px; top: 40px;
+    margin: 5px;
 }
 
 .login_user{
@@ -12,16 +13,17 @@
     position: relative; left: 40px; top: -15px;
 }
 
-fieldset{
+.input_form fieldset{
     font-weight: bold;
     padding-top: 15px;
 }
 
-label{
+.input_form label{
     font-weight: normal;
+    padding: 15px;
 }
 
-input[type="text"] {
+.input_form input[type="text"] {
     width: 160px;
     height:20px;
     font-size: 12px;
@@ -32,3 +34,70 @@ input[type="text"] {
     margin-bottom: 15px;
 }
 
+.menu_field{
+    display: block;
+    position: absolute; left: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 15px 0;
+    width: 70%;
+    background: rgba(216, 214, 214, 0.336);
+    
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    row-gap: 30px;
+    justify-items: center;
+}
+
+.menu_item{
+    width: 200px;
+    min-height: 250px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.42);
+}
+
+.type_default img{
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    padding: 10px;
+    width: 80%;
+}
+
+.menu_item p{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    align-items: center;
+    padding-right: 10px;
+    margin: 0 0 10px 0;
+}
+
+.menu__item-descr{
+    text-align: left;
+    padding: 0 10px;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.menu__item-price{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 10px 10px;
+    font-weight: bold;
+}
+
+.type_eco img{
+    border-radius: 3px;
+    border: 3px solid rgba(39, 128, 12, 0.795);
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    padding: 4%;
+    width: 80%;
+}
