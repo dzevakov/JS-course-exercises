@@ -60,7 +60,6 @@ class GoodsCard{
                     <div class="menu__item-price">Цена с учетом скидки :<span>${Math.round(((this.price * 0.8) * 100)) / 100}</span>руб</div>
                     <p><input type="checkbox" name="good1">В корзину</p>
                 </div>`;
-                break;
             case "hot":
                 element.innerHTML = `
                 <div class=${this.type}>
@@ -74,8 +73,19 @@ class GoodsCard{
         }        
         this.parent.append(element);
     }
+
+    //Dar: 1 method getCost()
 }
 
+//Dar 2 разбить GoodsCard на раздельные классы по типу товара
+// extends - что такое
+class EcoGood extends GoodsCard {
+
+}
+
+//Dar 3 заменить forEach на map, filter, find 
+//Dar 4 отобразить список сохраненных товаров юзера и общую цену.
+// <li></li>
 goodsInShop.forEach(good => {
     new GoodsCard(
         good,
