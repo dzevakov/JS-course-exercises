@@ -15,7 +15,7 @@ function user(id, name, password, email)  {
 
 // Добавляем пользователя, если его еще не существует
 function addUser(id, userName, userPsw, userEmail) {
-    const newUser = new user(id++, userName, userPsw, userEmail);
+    const newUser = new user(id, userName, userPsw, userEmail);
     state.users.push(newUser);
     // state.save();
  
@@ -43,9 +43,12 @@ btn.addEventListener('click', (event) => {
 
     if (userEmail in state.users === false) {
         addUser(state.id, userName, userPsw, userEmail);
-     
-        // console.log(state);
+        state.activeUserId = state.id;
+        state.id++;
+             
+        // console.log(state.id);
         state.save();
+        console.log(state);
     } else {
         alert('Пользователь с таким именем уже существует');
         return;
@@ -67,10 +70,23 @@ btnLogIn.addEventListener('click', (e) => {
     
     const userNameValue = document.querySelector('#name'),
           userPswValue = document.querySelector('#password'),
-          userEmailValue = document.querySelector('#email');
-
-    const userName = userNameValue.value,
+          userEmailValue = document.querySelector('#email'),
+          userName = userNameValue.value,
           userPsw = userPswValue.value;
+          
+    // if (userName in state.users === false) {
+    //     state.load();
+    //     if (userName in state === false) {
+    //         alert('Пользователь не найден.');
+    //     }
+    // }
+
+    state.users.forEach(function(user, i) {
+        if (user.name === userName) {
+            id = i;
+            state.activeUserId = id;
+        }
+    });
 
     if (userNameValue.value === '' || userPswValue.value === '' || userEmailValue === '') {
         alert('Заполните все поля.');
@@ -86,14 +102,6 @@ btnLogIn.addEventListener('click', (e) => {
     userNameValue.value = '';
     userPswValue.value = '';
     userEmailValue.value = '';
-
-    if (userName in state === false) {
-        state.load();
-        if (userName in state === false) {
-            alert('Пользователь не найден.');
-        }
-    }
-    // state.load(userName);
     // console.log(state);
 
 });
