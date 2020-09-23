@@ -14,8 +14,9 @@ const state = {
     },
 };
 
-const goodsInShop = [];
-init(goodsInShop);
+
+
+const goodsInShop = init();
 console.log(goodsInShop);
 
 class GoodsCard{
@@ -33,16 +34,21 @@ class GoodsCard{
         this.price = good.cost * this.rate;
     }
 
+    renderInsides() {
+        return `<img src=${this.src} alt=${this.alt}>
+        <div class="menu__item-descr">${this.descr}</div>
+        <div class="menu__item-price">Цена:<span>${this.price}</span>руб</div>`
+    }
+
     render() {
         const element = document.createElement('div');
+        const insides = this.renderInsides()
+
         element.className = "menu_item";
 
             element.innerHTML = `
                 <div class="default">
-                    <img src=${this.src} alt=${this.alt}>
-                    <div class="menu__item-descr">${this.descr}</div>
-                    <div class="menu__item-price">Цена:<span>${this.price}</span>руб</div>
-                    <p><input type="checkbox" name="good1">В корзину</p>
+                    ${insides}
                 </div>`;
   
         this.parent.append(element);
@@ -56,13 +62,10 @@ class EcoGood extends GoodsCard {
     render() {           
         const element = document.createElement('div');
         element.className = "menu_item";
-
+        const insides = this.renderInsides()    
             element.innerHTML = `
                 <div class="eco">
-                    <img src=${this.src} alt=${this.alt}>
-                    <div class="menu__item-descr">${this.descr}</div>
-                    <div class="menu__item-price">Цена:<span>${this.price}</span>руб</div>
-                    <p><input type="checkbox" name="good1">В корзину</p>
+                ${insides}
                 </div>`;
             this.parent.append(element); 
      }
@@ -109,34 +112,35 @@ class HotGood extends GoodsCard {
 //Dar 4 отобразить список сохраненных товаров юзера и общую цену.
 // <li></li>
 function renderGoods (goods) {
-    goods.forEach(good => {
-        switch(good.type) {
-            case "default":
-                new GoodsCard(
-                    good,
-                    ".menu_field .container"
-                ).render();
-                break;
-            case "eco":
-                new EcoGood(
-                    good,
-                    ".menu_field .container"
-                ).render();
-                break;
-            case "discount":
-                new DiscountGood(
-                    good,
-                    ".menu_field .container"
-                ).render();
-                break;
-            case "hot":
-                new HotGood(
-                    good,
-                    ".menu_field .container"
-                ).render();
-                break;
-        }
-    }); 
+    // goods.forEach(good => {
+    //     switch(good.type) {
+    //         case "default":
+    //             new GoodsCard(
+    //                 good,
+    //                 ".menu_field .container"
+    //             ).render();
+    //             break;
+    //         case "eco":
+    //             new EcoGood(
+    //                 good,
+    //                 ".menu_field .container"
+    //             ).render();
+    //             break;
+    //         case "discount":
+    //             new DiscountGood(
+    //                 good,
+    //                 ".menu_field .container"
+    //             ).render();
+    //             break;
+    //         case "hot":
+    //             new HotGood(
+    //                 good,
+    //                 ".menu_field .container"
+    //             ).render();
+    //             break;
+    //     }
+    // }); 
+    good.forEach(good => good.render())
 }
 
 renderGoods(goodsInShop);
@@ -200,3 +204,71 @@ userGoods.addEventListener('click', (e) => {
             const parent = document.querySelector("section");
             parent.append(element); 
 });
+
+const type = {
+    default: 'default',
+    eco: 'eco',
+    discount: 'discount',
+    hot: 'hot'
+};
+
+function init() {
+    const goods = []
+    const simpleForkSilver = {
+        desctiption: 'Набор столовых вилок. Серебро',
+        cost: 32,
+        img: "img/forkSilver.jpg"
+    };
+    goods.push(new GoodsCard(simpleForkSilver));
+    
+    const ecoForkBabmuk = {
+        desctiption: 'Набор экологических столовых вилок. Бамбук.',
+        cost: 45,
+        img: "img/forkBamboo.jpg"
+    };
+    goods.push(new EcoGood(ecoForkBabmuk));
+
+    const discountForkSteel = {
+        desctiption: 'Набор столовых вилок. Нержавейка. Скидка 20%.',
+        cost: 15,
+        type: type.discount,
+        img: "img/forkSteel.jpg"
+    };
+    goods.push(discountForkSteel);
+    const hotForkSilver = {
+        desctiption: 'Набор столовых вилок. Лидер продаж.',
+        cost: 27,
+        type: type.hot,
+        img: "img/hotForkSilver.jpg"
+    };
+    goods.push(hotForkSilver);
+    const simpleForkGold = {
+        desctiption: 'Набор столовых вилок. Золото',
+        cost: 75,
+        type: type.default,
+        img: "img/forkGold.jpg"
+    };
+    goods.push(simpleForkGold);
+    const ecoForkOak = {
+        desctiption: 'Набор экологических столовых вилок. Дуб.',
+        cost: 60,
+        type: type.eco,
+        img: './good.jpg'
+    };
+    goods.push(ecoForkOak);
+    const discountForkSteel2 = {
+        desctiption: 'Набор столовых вилок. Нержавейка. Скидка 20%.',
+        cost: 19,
+        type: type.discount,
+        img: './good.jpg'
+    };
+    goods.push(discountForkSteel2);
+    const hotForkGold = {
+        desctiption: 'Набор столовых вилок. Лидер продаж.',
+        cost: 27,
+        type: type.hot,
+        img: './good.jpg'
+    };
+    goods.push(hotForkGold);
+    return goods
+}
