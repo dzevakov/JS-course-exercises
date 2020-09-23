@@ -80,7 +80,7 @@ btnLogIn.addEventListener('click', (e) => {
     //         alert('Пользователь не найден.');
     //     }
     // }
-
+    state.load();
     state.users.forEach(function(user, i) {
         if (user.name === userName) {
             id = i;
