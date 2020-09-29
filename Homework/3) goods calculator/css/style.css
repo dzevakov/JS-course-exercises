@@ -59,6 +59,7 @@ section {
 }
 
 .menu_item{
+    position: relative;
     width: 70%;
     min-height: 250px;
     background: rgb(255, 255, 255);
@@ -74,10 +75,9 @@ section {
 }
 
 .menu_item p{
-    display: flex;
-    justify-content: flex-end;
-    font-size: 12px;
-    align-items: center;
+    position: absolute;
+    bottom: 0; right: 0;
+    font-size: 11px;
     padding-right: 10px;
     margin: 0 0 10px 0;
 }
@@ -86,7 +86,7 @@ section {
     text-align: left;
     padding: 0 10px;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .menu_item .menu__item-price{
@@ -95,6 +95,8 @@ section {
     justify-content: flex-start;
     padding: 10px 10px;
     font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 30px;
 }
 
 .menu_item .eco img{
