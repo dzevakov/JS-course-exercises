@@ -1,1 +1,0 @@
-{"users":[{"id":0,"name":"SCAA","email":"321@maol.ru","password":"asdas","goods":[{"src":"img/forkSilver.jpg","alt":"alt","descr":"Набор столовых вилок. Серебро","rate":3,"parent":{},"price":96}]}],"id":1,"activeUserId":0}
