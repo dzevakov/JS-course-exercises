@@ -92,7 +92,7 @@ userGoods.addEventListener('click', (e) => {
     const activeUserId = state.activeUserId;
     renderGoods(state.users[activeUserId].goods);
 
-    const spans = document.querySelectorAll('span');
+    const spans = document.querySelectorAll('span[type="price"]');
     const spansArray = [];
     spans.forEach(span => {
         spansArray.push(span.innerHTML);

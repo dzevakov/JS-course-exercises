@@ -26,8 +26,8 @@ class DefaultGood{
             element.innerHTML = `
                 <div class="default">
                     ${insides}
-                    <div class="menu__item-price">Цена:<span>${this.price}</span>руб</div>
-                    <p><input type="checkbox" name="good1">В корзину</p>
+                    <div class="menu__item-price">Цена:<span type="price">${this.price}</span>руб</div>
+                    <p><input type="checkbox">В корзину</p>
                 </div>`;
 
         this.parent.append(element);
@@ -46,8 +46,8 @@ class DiscountGood extends DefaultGood {
             element.innerHTML = `
             <div class="discount">
                 ${insides}
-                <div class="menu__item-price">Цена с учетом скидки :<span>${this.price}</span>руб</div>
-                <p><input type="checkbox" name="good1">В корзину</p>
+                <div class="menu__item-price">Цена с учетом скидки :<span type="price">${this.price}</span>руб</div>
+                <p><input type="checkbox">В корзину</p>
             </div>`;
             this.parent.append(element); 
      }
@@ -63,8 +63,8 @@ class EcoGood extends DefaultGood {
             element.innerHTML = `
                 <div class="eco">
                 ${insides}
-                <div class="menu__item-price">Цена:<span>${this.price}</span>руб</div>
-                <p><input type="checkbox" name="good1">В корзину</p>
+                <div class="menu__item-price">Цена:<span type="price">${this.price}</span>руб</div>
+                <p><input type="checkbox">В корзину</p>
                 </div>`;
             this.parent.append(element); 
      }
@@ -80,8 +80,8 @@ class HotGood extends DefaultGood {
                 <img src=${this.src} alt=${this.alt}>
                 <img data-hot src="img/hot.png">
                 <div class="menu__item-descr">${this.descr}</div>
-                <div class="menu__item-price">Цена :<span>${this.price}</span>руб</div>
-                <p><input type="checkbox" name="good1">В корзину</p>
+                <div class="menu__item-price">Цена :<span type="price">${this.price}</span>руб</div>
+                <p><input type="checkbox">В корзину</p>
             </div>`;
             this.parent.append(element); 
      }
