@@ -1,5 +1,6 @@
 `use strict`;
 
+import {state} from './script.js';
 
 function user(id, name, password, email)  {
     this.id = id; //унакльно, находить маакс id из сохзраненных и делать +1

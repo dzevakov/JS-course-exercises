@@ -1,5 +1,7 @@
 `use strict`;
 
+import {init} from './init.js';
+
 const state = {
     users: [],
     id: 0,
@@ -109,3 +111,4 @@ userGoods.addEventListener('click', (e) => {
 });
 
 
+export {state};

@@ -1,4 +1,6 @@
-function init() {
+import {DefaultGood, EcoGood, DiscountGood, HotGood} from './classes.js';
+
+export function init() {
     const goods = [];
     const simpleForkSilver = {
         desctiption: 'Набор столовых вилок. Серебро',
