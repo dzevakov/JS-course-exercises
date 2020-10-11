@@ -86,3 +86,5 @@ class HotGood extends DefaultGood {
             this.parent.append(element); 
      }
 }
+
+export {DefaultGood, EcoGood, DiscountGood, HotGood};
