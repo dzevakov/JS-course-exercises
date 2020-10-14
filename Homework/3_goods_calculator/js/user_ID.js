@@ -3,7 +3,7 @@
 import {state} from './script.js';
 
 function user(id, name, password, email)  {
-    this.id = id; //унакльно, находить маакс id из сохзраненных и делать +1
+    this.id = id; 
     this.name = name;
     this.email = email;
     this.password = password;
@@ -12,16 +12,18 @@ function user(id, name, password, email)  {
     this.goods = goods;
 }
 
-// let id = 0;
-
-// Добавляем пользователя, если его еще не существует
 function addUser(id, userName, userPsw, userEmail) {
     const newUser = new user(id, userName, userPsw, userEmail);
     state.users.push(newUser);
-    // state.save();
- 
-    console.log(state.users);
+}
 
+function formReset (form) {
+    document.querySelector(form).reset();
+}
+
+function welcomeUser(userName) {
+    const loginUser = document.querySelector('#enter_user_name');
+    loginUser.innerText = `Добро пожаловать ${userName}`;
 }
 
 // Create user
@@ -47,21 +49,15 @@ btn.addEventListener('click', (event) => {
         state.activeUserId = state.id;
         state.id++;
              
-        // console.log(state.id);
         state.save();
-        console.log(state);
     } else {
         alert('Пользователь с таким именем уже существует');
         return;
     }
 
-    const loginUser = document.querySelector('#enter_user_name');
-    loginUser.innerText = `Добро пожаловать ${userName}`;
+    welcomeUser(userName);
 
-    userNameValue.value = '';
-    userPswValue.value = '';
-    userEmailValue.value = '';
-
+    formReset('#login_form');
 });
 
 // LogIn
@@ -75,24 +71,17 @@ btnLogIn.addEventListener('click', (e) => {
           userName = userNameValue.value,
           userPsw = userPswValue.value;
           
-    // if (userName in state.users === false) {
-    //     state.load();
-    //     if (userName in state === false) {
-    //         alert('Пользователь не найден.');
-    //     }
-    // }
     state.load();
     state.users.forEach(function(user, i) {
         if (user.name === userName) {
-            id = i;
-            state.activeUserId = id;
+            state.activeUserId = i;
         }
     });
 
     if (userNameValue.value === '' || userPswValue.value === '' || userEmailValue === '') {
         alert('Заполните все поля.');
         return;
-    } else if (userPsw !== state.users[id].password) {
+    } else if (userPsw !== state.users[state.activeUserId].password) {
         alert('Неверный пароль.');
         return;
     }
@@ -100,9 +89,8 @@ btnLogIn.addEventListener('click', (e) => {
     const loginUser = document.querySelector('#enter_user_name');
     loginUser.innerText = `Добро пожаловать ${userName}`;
 
-    userNameValue.value = '';
-    userPswValue.value = '';
-    userEmailValue.value = '';
-    // console.log(state);
-
+    formReset('#login_form');
 });
+
+
+

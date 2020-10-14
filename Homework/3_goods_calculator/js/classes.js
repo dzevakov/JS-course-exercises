@@ -32,7 +32,6 @@ class DefaultGood{
 
         this.parent.append(element);
     }
-//Dar: 1 method getCost()
 }
 
 class DiscountGood extends DefaultGood {
@@ -53,8 +52,6 @@ class DiscountGood extends DefaultGood {
      }
 }
 
-//Dar 2 разбить GoodsCard на раздельные классы по типу товара
-// extends - что такое
 class EcoGood extends DefaultGood {
     render() {           
         const element = document.createElement('div');

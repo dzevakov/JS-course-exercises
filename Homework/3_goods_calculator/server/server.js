@@ -10,11 +10,6 @@ const fs = require("fs");
 app.use(express.json()) ;// for parsing application/json
 app.use(cors());
 
-// var corsOptions = {
-//     origin: 'http://localhost:90/',
-//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-//   };
-
 app.options('http://localhost:90/', cors());
 
 app.get('/', cors(), (req, res) => {
