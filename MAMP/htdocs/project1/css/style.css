@@ -1,0 +1,39 @@
+* {
+ margin: 0;
+ padding: 0; 
+}
+
+form {
+    display: block;
+    background-color: rgb(231, 231, 231);
+    width: 50%;
+}
+
+legend {
+    margin-left: 5%;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+fieldset {
+    margin-top: 1em;
+}
+
+p {
+    display: block;
+    margin: 10px auto 10px auto;
+    width: 80%;
+    height: 20%;
+
+}
+
+label {
+    margin-right: 10%;
+    font-size: 1.75vw;
+    
+}
+
+input {
+    float: right;
+    width: 25vw;
+}
