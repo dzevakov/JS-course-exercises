@@ -1,8 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
+app.use(express.json()) ;// for parsing application/json
+app.use(cors());
+
+app.options('http://localhost:90/', cors());
+
+app.get('/', cors(), (req, res) => {
   res.send('Hello World!');
 });
 
